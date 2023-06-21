@@ -1,0 +1,57 @@
+<div>
+    <h2>Product-update</h2>
+    <app-header></app-header>
+</div>
+
+<form [formGroup]="form" (ngSubmit)="onHandleSubmit()">
+    <div class="mb-3">
+        <label for="exampleInputEmail1" class="form-label">Name</label>
+        <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp"
+            formControlName="name">
+        <div class="errors">
+            <div *ngIf="form.get('name')?.hasError('required') && submitted">Name la truong bat buoc
+            </div>
+
+            <div *ngIf="form.get('name')?.hasError('minlength') && submitted">Name toi thieu 6 ky tu
+            </div>
+
+            <div *ngIf="form.get('name')?.hasError('maxlength') && submitted">Name toi da 255 ky tu
+            </div>
+        </div>
+    </div>
+    <div class="mb-3">
+        <label for="exampleInputEmail1" class="form-label">Price</label>
+        <input type="number" class="form-control" id="exampleInputEmail1"
+            aria-describedby="emailHelp" formControlName="price">
+        <div class="errors">
+            <div *ngIf="form.get('price')?.hasError('required') && submitted">Price la truong bat
+                buoc
+            </div>
+
+            <div *ngIf="form.get('price')?.hasError('min') && submitted">Price khong the am
+            </div>
+
+
+        </div>
+    </div>
+
+    <div class="mb-3">
+        <label for="exampleInputEmail1" class="form-label">Description</label>
+        <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp"
+            formControlName="desc">
+        <div class="errors">
+            <div *ngIf="form.get('desc')?.hasError('required') && submitted">Description la truong
+                bat buoc
+            </div>
+
+            <div *ngIf="form.get('desc')?.hasError('minlength') && submitted">Description toi thieu
+                6 ky tu
+            </div>
+
+            <div *ngIf="form.get('desc')?.hasError('maxlength') && submitted">Description toi da 255
+                ky tu
+            </div>
+        </div>
+    </div>
+    <button type="submit" class="btn btn-primary">Submit</button>
+</form>
